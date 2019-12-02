@@ -13,15 +13,12 @@ namespace comp110_worksheet_7
                 for (int i = 0; i < CurrentDirectory.Length; i++)
                 {
                     CurrentDepth += 1;
+                    if (CurrentDepth > MostDepth)
+                    {
+                        MostDepth = CurrentDepth;
+                    }
                     string[] NewDirectory = Directory.GetDirectories(CurrentDirectory[i], "*.*", SearchOption.TopDirectoryOnly);
                     GoDeeper(NewDirectory, CurrentDepth, MostDepth);
-                }
-            }
-            else
-            {
-                if (CurrentDepth > MostDepth)
-                {
-                    MostDepth = CurrentDepth;
                 }
             }
             return MostDepth;
